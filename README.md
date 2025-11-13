@@ -1,63 +1,62 @@
-# OnlineApparel
+# Online Apparel Shopping System
 
-The Online Apparel Shopping System is a full-stack web application designed to provide users with a seamless and convenient platform for browsing, selecting, and purchasing apparel online. The system enables customers to search products by type, brand, and style, add items to cart, and complete purchases through a simple checkout process.
+A full‑stack Django web application that provides a simple, convenient platform for browsing, searching, and purchasing apparel. Users can search products by type, brand, and style, add items to a cart, and complete a basic checkout flow. Administrators can manage products via the Django admin.
 
-What this project is
-- A Django project located at [OnlineApparel/manage.py](OnlineApparel/manage.py) with settings in [`Apparel.settings`](OnlineApparel/Apparel/settings.py).
-- Main app: [`ApparelApp`](OnlineApparel/ApparelApp/) containing product models, views, templates and static assets:
-  - Models: [`ApparelApp.models`](OnlineApparel/ApparelApp/models.py)
-  - Views: [`ApparelApp.views`](OnlineApparel/ApparelApp/views.py)
-  - App URLs: [OnlineApparel/ApparelApp/urls.py](OnlineApparel/ApparelApp/urls.py)
-  - Admin registration: [OnlineApparel/ApparelApp/admin.py](OnlineApparel/ApparelApp/admin.py)
-  - Templates: [OnlineApparel/ApparelApp/templates/](OnlineApparel/ApparelApp/templates/)
-  - Static files: [OnlineApparel/ApparelApp/static/](OnlineApparel/ApparelApp/static/)
+## Key features
+- Product catalog with search and filters (type, brand, style)
+- Product detail pages and images
+- Cart management (add/remove/update)
+- Simple checkout flow (order creation)
+- Admin interface for product and order management
+- Static and media file handling for assets and uploads
 
-What it uses
-- Python + Django (see [OnlineApparel/requirements.txt](OnlineApparel/requirements.txt))
-- Project settings and URL routing in [OnlineApparel/Apparel/urls.py](OnlineApparel/Apparel/urls.py) and WSGI at [`Apparel.wsgi`](OnlineApparel/Apparel/wsgi.py).
-- Environment config file: [OnlineApparel/.env](OnlineApparel/.env)
-- Local SQLite DB: [OnlineApparel/db.sqlite3](OnlineApparel/db.sqlite3)
-- Static assets collected to [staticfiles/](staticfiles/) and uploaded media under [media/](media/). Sample images in [sampleimages/](sampleimages/).
+## Technology stack
+- Python 3.8+
+- Django (see requirements.txt)
+- SQLite (default local DB; configurable)
+- HTML/CSS templates and static assets
 
-Quick start (development)
-1. Create and activate a virtual environment:
-   - python -m venv .venv
-   - source .venv/bin/activate  (Windows: .venv\Scripts\activate)
+## Repository layout (high level)
+- OnlineApparel/manage.py
+- OnlineApparel/Apparel/ (project settings, urls, wsgi)
+- OnlineApparel/ApparelApp/ (main app: models, views, templates, static)
+- staticfiles/, media/, sampleimages/
+- OnlineApparel/requirements.txt, .env, db.sqlite3
+
+## Quick start (development)
+1. Open a terminal in the project root:
+   - Windows PowerShell / CMD:
+     .venv\Scripts\activate
+   - or:
+     python -m venv .venv
+     .venv\Scripts\activate
 
 2. Install dependencies:
-   - pip install -r OnlineApparel/requirements.txt
+   pip install -r OnlineApparel/requirements.txt
 
 3. Configure environment:
-   - Copy or edit [OnlineApparel/.env](OnlineApparel/.env) to set SECRET_KEY, DEBUG, DB settings, etc.
+   - Copy OnlineApparel/.env.example or create OnlineApparel/.env and set SECRET_KEY, DEBUG, DB settings as needed.
 
-4. Apply migrations and create a superuser:
-   - python OnlineApparel/manage.py migrate
-   - python OnlineApparel/manage.py createsuperuser
+4. Database setup:
+   python OnlineApparel/manage.py migrate
+   python OnlineApparel/manage.py createsuperuser
 
-5. Run development server:
-   - python OnlineApparel/manage.py runserver
-   - Open http://127.0.0.1:8000
+5. Run server:
+   python OnlineApparel/manage.py runserver
+   Open http://127.0.0.1:8000
 
-Testing
-- Run the test suite: python OnlineApparel/manage.py test (tests are in [OnlineApparel/ApparelApp/tests.py](OnlineApparel/ApparelApp/tests.py)).
+## Testing
+Run the test suite:
+python OnlineApparel/manage.py test
 
-Notes
-- Edit app code in [OnlineApparel/ApparelApp/](OnlineApparel/ApparelApp/).
-- Adjust production settings in [`Apparel.settings`](OnlineApparel/Apparel/settings.py) (set DEBUG=False, configure DB/static/media).
-- Use [OnlineApparel/manage.py](OnlineApparel/manage.py) for common Django management commands.
+## Deployment notes
+- Set DEBUG=False and provide a secure SECRET_KEY via environment variables.
+- Use a production database (PostgreSQL, MySQL) and configure STATIC/MEDIA serving (e.g., collectstatic + CDN or web server).
+- Configure allowed hosts and HTTPS for production.
 
-Files of interest
-- [OnlineApparel/manage.py](OnlineApparel/manage.py)
-- [`Apparel.settings`](OnlineApparel/Apparel/settings.py)
-- [OnlineApparel/Apparel/urls.py](OnlineApparel/Apparel/urls.py)
-- [`Apparel.wsgi`](OnlineApparel/Apparel/wsgi.py)
-- [`ApparelApp.models`](OnlineApparel/ApparelApp/models.py)
-- [`ApparelApp.views`](OnlineApparel/ApparelApp/views.py)
-- [OnlineApparel/ApparelApp/urls.py](OnlineApparel/ApparelApp/urls.py)
-- [OnlineApparel/requirements.txt](OnlineApparel/requirements.txt)
-- [OnlineApparel/.env](OnlineApparel/.env)
-- [OnlineApparel/db.sqlite3](OnlineApparel/db.sqlite3)
-- [staticfiles/](staticfiles/) • [media/](media/) • [sampleimages/](sampleimages/)
+## Contributing
+- Fork, create a feature branch, add tests, and open a pull request.
+- Keep feature scope small and document changes.
 
-License
-- Add license text here.
+## License
+Specify a license (e.g., MIT) or add your preferred license file.
