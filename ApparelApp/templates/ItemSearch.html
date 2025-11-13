@@ -1,0 +1,98 @@
+{% load static %}
+<html>
+<head>
+<title>Online Apparel Shopping</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+ <script LANGUAGE="Javascript" >
+function validate(){
+    var type = document.forms["f1"]["t1"].value;
+    var style = document.forms["f1"]["t2"].value;
+    var brand = document.forms["f1"]["t3"].value;
+    
+    if(type == "-" && style == "-" && brand == "-"){
+        window.alert("Please select at least one search criteria");
+        return false;
+    }
+    return true;
+}
+		
+	
+	</script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<center><font size="4" color="yellow">Online Apparel Shopping</font></center>
+		</div>
+		<div id="slogan">
+			
+		</div>
+	</div>
+	<div id="menu">
+		<ul><center>
+	  <li><a href="{% url 'ItemSearch' %}">Search Catalogue</a></li>
+	  <li><a href="{% url 'TrackOrder' %}">Track Order</a></li>
+	   <li><a href="{% url 'Feedback' %}">Feedback</a></li>
+      <li><a href="{% url 'index' %}">Logout</a></li>		
+		</center></ul>
+<br class="clearfix" />
+				</div>
+			
+	<div id="splash">
+		<img class="pic" src="{% static 'images/investor.jpg' %}" width="870" height="130" alt="" />
+	</div>	
+			<center>
+<form name="f1" method="post" action={% url 'SearchItemData' %} OnSubmit="return validate()">
+	{% csrf_token %}<br/>
+   <h3><b>Catalogue Search Screen</b></h3>
+   
+	<font size="" color="black"><center>{{ data }}</center></font>
+						
+						<table align="center" width="80" >
+			 <tr><td><font size="3" color="black">Product&nbsp;Type&nbsp;</b></td><td><select name="t1">
+			 <option value="-">----</option>
+		<option value="Shirt">Shirt</option>
+		<option value="T-Shirt">T-Shirt</option>
+		<option value="Jeans">Jeans</option>
+		<option value="Pants">Pants</option>
+		<option value="Dress">Dress</option>
+		<option value="Others">Others</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="3" color="black">Product&nbsp;Style&nbsp;</b></td><td><select name="t2">
+		 <option value="-">----</option>
+		<option value="Bohemian">Bohemian</option>
+		<option value="Vintage">Vintage</option>
+		<option value="Streetwear">Streetwear</option>
+		<option value="Casual">Casual</option>
+		<option value="Formal">Formal</option>
+		<option value="Others">Others</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="3" color="black">Product&nbsp;Brand&nbsp;</b></td><td><select name="t3">
+		 <option value="-">----</option>
+		<option value="Levis">Levis</option>
+		<option value="Adidas">Adidas</option>
+		<option value="Nike">Nike</option>
+		<option value="Fabindia">Fabindia</option>
+		<option value="Biba">Biba</option>
+		<option value="Tommy Hilfiger">Tommy Hilfiger</option>
+		<option value="Others">Others</option>
+		</select>
+		</td></tr>
+         	
+		
+         
+			<tr><td></td><td><input type="submit" value="Search">
+			</td>
+			</table>
+				</div>	
+					
+				</div>
+				
+	</body>
+</html>

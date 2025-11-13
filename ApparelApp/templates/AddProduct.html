@@ -1,0 +1,132 @@
+{% load static %}
+<html>
+<head>
+<title>Online Apparel Shopping</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+ <script LANGUAGE="Javascript" >
+function validate(){
+    var productName = document.forms["f1"]["t1"].value.trim();
+    var cost = document.forms["f1"]["t5"].value.trim();
+    var description = document.forms["f1"]["t6"].value.trim();
+    var image = document.forms["f1"]["t7"].value.trim();
+    
+    if(!productName){
+        window.alert("Product name must be entered");
+        document.f1.t1.focus();
+        return false;
+    }
+    
+    if(!cost){
+        window.alert("Cost must be entered");
+        document.f1.t5.focus();
+        return false;
+    }
+    if(isNaN(cost) || parseFloat(cost) <= 0){
+        window.alert("Please enter a valid positive number for cost");
+        document.f1.t5.focus();
+        return false;
+    }
+    if(!description){
+        window.alert("Description must be entered");
+        document.f1.t6.focus();
+        return false;
+    }
+    
+    if(!image){
+        window.alert("Product image must be uploaded");
+        document.f1.t7.focus();
+        return false;
+    }
+    return true;
+}
+		
+	
+	</script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<center><font size="4" color="yellow">Online Apparel Shopping</font></center>
+		</div>
+		<div id="slogan">
+			
+		</div>
+	</div>
+	<div id="menu">
+		<ul><center>
+	  <li><a href="{% url 'AddProduct' %}">Add New Product Details</a></li>
+      <li><a href="{% url 'ViewOrders' %}">View Customer Orders</a></li>
+	   <li><a href="{% url 'ViewFeedback' %}">View Feedback</a></li>
+	  <li><a href="{% url 'index' %}">Logout</a></li>		
+		</center></ul>
+<br class="clearfix" />
+				</div>
+			
+	<div id="splash">
+		<img class="pic" src="{% static 'images/investor.jpg' %}" width="870" height="130" alt="" />
+	</div>	
+			<center>
+<form name="f1" method="post" action={% url 'AddProductData' %}  enctype="multipart/form-data" OnSubmit="return validate()">
+	{% csrf_token %}<br/>
+   <h3><b>Add New Product Screen</b></h3>
+   
+	<font size="" color="black"><center>{{ data }}</center></font>
+						
+						<table align="center" width="80" >
+			 <tr><td><font size="3" color="black">Product&nbsp;Name</b></td><td>&nbsp;<input type="text" name="t1" style="font-family: Comic Sans MS" size="30"/></td></tr>
+         
+		  
+		<tr><td><font size="3" color="black">Product&nbsp;Type</b></td><td>&nbsp;<select name="t2">
+		<option value="Shirt">Shirt</option>
+		<option value="T-Shirt">T-Shirt</option>
+		<option value="Jeans">Jeans</option>
+		<option value="Pants">Pants</option>
+		<option value="Dress">Dress</option>
+		<option value="Others">Others</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="3" color="black">Product&nbsp;Style</b></td><td>&nbsp;<select name="t3">
+		<option value="Bohemian">Bohemian</option>
+		<option value="Vintage">Vintage</option>
+		<option value="Streetwear">Streetwear</option>
+		<option value="Casual">Casual</option>
+		<option value="Formal">Formal</option>
+		<option value="Others">Others</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="3" color="black">Product&nbsp;Brand</b></td><td>&nbsp;<select name="t4">
+		<option value="Levis">Levis</option>
+		<option value="Adidas">Adidas</option>
+		<option value="Nike">Nike</option>
+		<option value="Fabindia">Fabindia</option>
+		<option value="Biba">Biba</option>
+		<option value="Tommy Hilfiger">Tommy Hilfiger</option>
+		<option value="Others">Others</option>
+		</select>
+		</td></tr>
+
+		
+		<tr><td><font size="3" color="black">Cost</b></td><td>&nbsp;<input type="text" name="t5" style="font-family: Comic Sans MS" size="20"/></td></tr>
+
+		<tr><td><font size="3" color="black">Description</b></td><td>&nbsp;<input type="text" name="t6" style="font-family: Comic Sans MS" size="60"/></td></tr>
+
+		
+
+		<tr><td><font size="3" color="black">Product&nbsp;Image</b></td><td>&nbsp;<input type="file" name="t7" style="font-family: Comic Sans MS" /></td></tr>
+		
+		
+         
+			<tr><td></td><td><input type="submit" value="Submit">
+			</td>
+			</table>
+			<br/><br/><br/><br/><br/>
+				</div>	
+					
+				</div>
+				
+	</body>
+</html>

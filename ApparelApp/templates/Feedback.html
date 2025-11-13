@@ -1,0 +1,71 @@
+{% load static %}
+<html>
+<head>
+    <title>Online Apparel Shopping</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    <script LANGUAGE="Javascript">
+        function validate() {
+            var feedback = document.forms["f1"]["t1"].value;
+            if (feedback == null || feedback.trim() == "") {
+                window.alert("Feedback must be entered");
+                document.f1.t1.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div id="logo">
+                <center><font size="4" color="yellow">Online Apparel Shopping</font></center>
+            </div>
+            <div id="slogan"></div>
+        </div>
+        <div id="menu">
+            <ul>
+                <center>
+                    <li><a href="{% url 'ItemSearch' %}">Search Catalogue</a></li>
+                    <li><a href="{% url 'TrackOrder' %}">Track Order</a></li>
+                    <li><a href="{% url 'Feedback' %}">Feedback</a></li>
+                    <li><a href="{% url 'index' %}">Logout</a></li>
+                </center>
+            </ul>
+            <br class="clearfix" />
+        </div>
+
+        <div id="splash">
+            <img class="pic" src="{% static 'images/investor.jpg' %}" width="870" height="130" alt="" />
+        </div>
+
+        <div class="content">
+            <center>
+                <form name="f1" method="post" action="{% url 'FeedbackAction' %}" onsubmit="return validate()">
+                    {% csrf_token %}
+                    <br/>
+                    <h3><b>Feedback Screen</b></h3>
+                    
+                    {% if data %}
+                    <div class="message">
+                        <font color="black"><center>{{ data }}</center></font>
+                    </div>
+                    {% endif %}
+                    
+                    <table align="center" width="80">
+                        <tr>
+                            <td><font size="3" color="black">Your Feedback</font></td>
+                            <td><input type="text" name="t1" style="font-family: Comic Sans MS" size="60"/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Submit"></td>
+                        </tr>
+                    </table>
+                </form>
+            </center>
+        </div>
+    </div>
+</body>
+</html>

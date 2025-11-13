@@ -1,0 +1,36 @@
+{% load static %}
+<html>
+<head>
+    <title>Static Files Test</title>
+</head>
+<body>
+    <h1>Testing Static Files</h1>
+    
+    <h3>CSS Test</h3>
+    <p>If the style.css file is loading correctly, this paragraph should have a red border:</p>
+    <p class="test-border">This should have a border from the CSS file</p>
+    
+    <h3>Image Test</h3>
+    <p>Direct static image reference:</p>
+    <img src="{% static 'images/investor.jpg' %}" width="200" height="100" alt="Investor image">
+    
+    <p>Product image reference (5.png):</p>
+    <img src="{% static 'products/5.png' %}" width="200" height="200" alt="Product image">
+    
+    <p>Product image reference (1.png):</p>
+    <img src="{% static 'products/1.png' %}" width="200" height="200" alt="Product image 1">
+    
+    <p>Direct URL to product image (5.png):</p>
+    <img src="/static/products/5.png" width="200" height="200" alt="Product image direct URL">
+    
+    <p>Direct URL to product image (1.png):</p>
+    <img src="/static/products/1.png" width="200" height="200" alt="Product image 1 direct URL">
+    
+    <style>
+        .test-border {
+            border: 2px solid red;
+            padding: 10px;
+        }
+    </style>
+</body>
+</html> 
