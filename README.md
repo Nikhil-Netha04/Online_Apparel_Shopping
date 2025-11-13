@@ -1,6 +1,6 @@
 # OnlineApparel
 
-A small Django e-commerce demo for browsing products, serving static/media files, and basic admin management.
+The Online Apparel Shopping System is a full-stack web application designed to provide users with a seamless and convenient platform for browsing, selecting, and purchasing apparel online. The system enables customers to search products by type, brand, and style, add items to cart, and complete purchases through a simple checkout process.
 
 What this project is
 - A Django project located at [OnlineApparel/manage.py](OnlineApparel/manage.py) with settings in [`Apparel.settings`](OnlineApparel/Apparel/settings.py).
